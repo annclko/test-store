@@ -1,0 +1,20 @@
+{
+  "name": "Spamalot & Vermin Menu",
+  "items": [
+    {
+      "name": "Rat Pie",
+      "description": "Take four medium-sized rats and lay them on the chopping board. Having First made sure the chopper is freshly sharpened, raise it as high above the first rat as you can. Make sure that the rat's neck is well exposed, then bring the chopper down with as much force as possible onto the neck or head of the rat. Then cook it in a pie.",
+      "price": 180
+    },
+    {
+      "name": "Rat Souffle",
+      "description": "Make sure that the rat's squeals are not audible from the street, particularly in areas where the Anti-Souffle League and similar do-gooders are out to persecute the innocent pleasures of the table. Anyway, cut the rat down and lay it on the chopping-board. Raise the chopper high above your head, with the stell glinting in the setting sun, and then bring it down - wham! - with a vivid crunch - straight across the taut neck of the terrified rodent, and make it into a souffle.",
+      "price":200
+    },
+    {
+      "name": "Bits of Rat Hidden Under a Chair",
+      "description": "This isn't so much a recipe as a bit of advice in the event of the Anti-Souffle League or it's simpering lackeys breaking into your flat. Your wife (or a friend's) should engage the pusillanimous toadies from the Leauge in conversation, perhaps turning the chat to the price of corn and the terrible damage inflicted by all kinds of rodents on personal property, and rats attacking small babies (this always takes the steam out of them) and you should have time to get any rat-bits sagely out of sight. Incidentally do make sure that your current copy of The Rat Gourmet hasn't been left lying around, otherwise all will be in vain, and the braying hounds of the culinary killjoys will be unleashed upon the things you cherish: your chopping-board, the chopper caught in the blood-red glare of the fading sun. Bring it down - crunch! The slight splintering of tiny spinal column under the keen metal! The last squeal and the death twitches of the helpless rat!",
+      "price": 100
+    }
+  ]
+}

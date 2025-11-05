@@ -44,6 +44,14 @@ app.get("/locations", (req, res) => {
   }
 });
 
+// Serve bundled widget directly from root (without /dist path)
+app.get('/store-locator-widget.js', (req, res) => {
+  const widgetPath = path.join(__dirname, 'dist', 'store-locator-widget.js');
+  res.setHeader('Content-Type', 'application/javascript');
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.sendFile(widgetPath);
+});
+
 // Serve static files (CSS, widget.js)
 app.use(express.static(__dirname));
 

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store Locator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="store-locator">
+        <div class="header">
+            <h1>Store Locator</h1>
+            <div class="search-container">
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search by city, state, or zip code..."
+                >
+                <button onclick="searchStores()">Search</button>
+            </div>
+        </div>
+        <div class="content">
+            <div class="stores-list" id="storesList">
+                <div class="loading">Loading stores...</div>
+            </div>
+            <div class="store-details" id="storeDetails">
+                <div class="empty">Select a store to view details</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let stores = [];
+        let filteredStores = [];
+        let selectedStore = null;
+
+        // Load stores from embedded JSON data
+        function loadStores() {
+            try {
+                stores = LOCATIONS_DATA;
+                filteredStores = stores;
+                renderStores();
+            } catch (error) {
+                document.getElementById('storesList').innerHTML =
+                    `<div class="error">Error loading stores: ${error.message}</div>`;
+                console.error('Error loading stores:', error);
+            }
+        }
+
+        // Render stores list
+        function renderStores() {
+            const listEl = document.getElementById('storesList');
+
+            if (filteredStores.length === 0) {
+                listEl.innerHTML = '<div class="empty">No stores found</div>';
+                return;
+            }
+
+            listEl.innerHTML = filteredStores.map(store => {
+                const city = store.address?.city?.[0]?.name || 'N/A';
+                const state = store.address?.state?.[0]?.name || 'N/A';
+                const zip = store.address?.zip || '';
+                const street = store.address?.street || '';
+
+                return `
+                    <div class="store-item ${selectedStore?.storeId === store.storeId ? 'selected' : ''}"
+                         onclick="selectStore('${store.storeId}')">
+                        <h3>${store.name}</h3>
+                        <div class="address">
+                            ${street}<br>
+                            ${city}, ${state} ${zip}
+                        </div>
+                        <div class="contact">
+                            ${store.contact?.phone || ''}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Select a store
+        function selectStore(storeId) {
+            selectedStore = stores.find(s => s.storeId === storeId);
+            renderStoreDetails();
+            renderStores(); // Re-render to update selected state
+        }
+
+        // Render store details
+        function renderStoreDetails() {
+            const detailsEl = document.getElementById('storeDetails');
+
+            if (!selectedStore) {
+                detailsEl.innerHTML = '<div class="empty">Select a store to view details</div>';
+                return;
+            }
+
+            const city = selectedStore.address?.city?.[0]?.name || 'N/A';
+            const state = selectedStore.address?.state?.[0]?.name || 'N/A';
+            const zip = selectedStore.address?.zip || '';
+            const street = selectedStore.address?.street || '';
+            const country = selectedStore.address?.country?.[0]?.name || '';
+
+            let hoursHtml = '';
+            if (selectedStore.openingHours?.regular) {
+                hoursHtml = selectedStore.openingHours.regular.map(day => {
+                    return `${day.day}: ${day.open || 'Closed'}`;
+                }).join('<br>');
+            }
+
+            detailsEl.innerHTML = `
+                <h2>${selectedStore.name}</h2>
+
+                <div class="section">
+                    <h3>Address</h3>
+                    <div class="info">
+                        ${street}<br>
+                        ${city}, ${state} ${zip}<br>
+                        ${country}
+                    </div>
+                </div>
+
+                ${selectedStore.shortDescription ? `
+                <div class="section">
+                    <h3>Description</h3>
+                    <div class="info">${selectedStore.shortDescription}</div>
+                </div>
+                ` : ''}
+
+                ${selectedStore.contact ? `
+                <div class="section">
+                    <h3>Contact</h3>
+                    <div class="info">
+                        ${selectedStore.contact.phone ? `Phone: ${selectedStore.contact.phone}<br>` : ''}
+                        ${selectedStore.contact.email ? `Email: ${selectedStore.contact.email}<br>` : ''}
+                        ${selectedStore.contact.website ? `Website: <a href="${selectedStore.contact.website}" target="_blank">${selectedStore.contact.website}</a>` : ''}
+                    </div>
+                </div>
+                ` : ''}
+
+                ${hoursHtml ? `
+                <div class="section">
+                    <h3>Opening Hours</h3>
+                    <div class="info hours">${hoursHtml}</div>
+                </div>
+                ` : ''}
+
+                ${selectedStore.geoLocation ? `
+                <div class="section">
+                    <h3>Location</h3>
+                    <div class="info">
+                        Lat: ${selectedStore.geoLocation.lat}, Lon: ${selectedStore.geoLocation.lon}
+                    </div>
+                </div>
+                ` : ''}
+            `;
+        }
+
+        // Search stores (client-side filtering - CSR)
+        function searchStores() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+
+            if (!query) {
+                filteredStores = stores;
+            } else {
+                filteredStores = stores.filter(store => {
+                    const city = store.address?.city?.[0]?.name?.toLowerCase() || '';
+                    const state = store.address?.state?.[0]?.name?.toLowerCase() || '';
+                    const zip = store.address?.zip?.toLowerCase() || '';
+                    const name = store.name?.toLowerCase() || '';
+                    const street = store.address?.street?.toLowerCase() || '';
+
+                    return city.includes(query) ||
+                           state.includes(query) ||
+                           zip.includes(query) ||
+                           name.includes(query) ||
+                           street.includes(query);
+                });
+            }
+
+            selectedStore = null;
+            renderStores();
+            renderStoreDetails();
+        }
+
+        // Real-time search with debouncing for better UX
+        let searchTimeout;
+        function debounceSearch() {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                searchStores();
+            }, 300);
+        }
+
+        // Allow Enter key to trigger search immediately
+        document.getElementById('searchInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                clearTimeout(searchTimeout);
+                searchStores();
+            }
+        });
+
+        // Real-time search as user types (debounced)
+        document.getElementById('searchInput').addEventListener('input', () => {
+            debounceSearch();
+        });
+
+        // Load stores on page load
+        loadStores();
+    </script>
+</body>
+</html>
+

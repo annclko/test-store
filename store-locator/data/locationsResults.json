@@ -1,0 +1,451 @@
+[
+	{
+		"storeId": "001",
+		"name": "Downtown Flagship Store",
+		"siteName": "Main Street Location",
+		"alternativeNames": ["DT Store", "City Center"],
+		"shortDescription": "Our flagship location in the heart of downtown",
+		"longDescription": "Visit our spacious downtown flagship store featuring the latest collections, expert staff, and premium shopping experience.",
+		"geoLocation": {
+			"lat": 40.7128,
+			"lon": -74.0060
+		},
+		"address": {
+			"street": "123 Main Street",
+			"zip": "10001",
+			"city": [
+				{
+					"name": "New York",
+					"locale": "en"
+				},
+				{
+					"name": "Nueva York",
+					"locale": "es"
+				}
+			],
+			"state": [
+				{
+					"name": "New York",
+					"locale": "en"
+				}
+			],
+			"country": [
+				{
+					"name": "United States",
+					"locale": "en"
+				},
+				{
+					"name": "États-Unis",
+					"locale": "fr"
+				}
+			]
+		},
+		"contact": {
+			"phone": "+1-212-555-0100",
+			"email": "downtown@example.com",
+			"website": "https://www.example.com/stores/downtown"
+		},
+		"openingHours": {
+			"regular": [
+				{
+					"day": "monday",
+					"span": [
+						{
+							"open": "09:00",
+							"close": "18:00"
+						}
+					]
+				},
+				{
+					"day": "tuesday",
+					"span": [
+						{
+							"open": "09:00",
+							"close": "18:00"
+						}
+					]
+				},
+				{
+					"day": "wednesday",
+					"span": [
+						{
+							"open": "09:00",
+							"close": "18:00"
+						}
+					]
+				},
+				{
+					"day": "thursday",
+					"span": [
+						{
+							"open": "09:00",
+							"close": "20:00"
+						}
+					]
+				},
+				{
+					"day": "friday",
+					"span": [
+						{
+							"open": "09:00",
+							"close": "20:00"
+						}
+					]
+				},
+				{
+					"day": "saturday",
+					"span": [
+						{
+							"open": "10:00",
+							"close": "18:00"
+						}
+					]
+				},
+				{
+					"day": "sunday",
+					"span": [
+						{
+							"open": "11:00",
+							"close": "17:00"
+						}
+					]
+				}
+			],
+			"special": [
+				{
+					"startDate": "2024-12-24",
+					"endDate": "2024-12-24",
+					"label": "Christmas Eve",
+					"isClosed": false,
+					"openTime": "09:00",
+					"closeTime": "15:00"
+				},
+				{
+					"startDate": "2024-12-25",
+					"endDate": "2024-12-25",
+					"label": "Christmas Day",
+					"isClosed": true
+				}
+			]
+		},
+		"status": {
+			"type": "open"
+		},
+		"attributes": {
+			"hasParking": true,
+			"hasWifi": true,
+			"wheelchairAccessible": true,
+			"floorCount": 3
+		},
+		"customData": {
+			"features": ["fitting-rooms", "gift-wrapping", "personal-shopper"],
+			"storeSize": 5000,
+			"amenities": {
+				"cafe": true,
+				"restrooms": true,
+				"elevator": true
+			}
+		},
+		"updated": "2024-01-15T10:30:00Z"
+	},
+	{
+		"storeId": "002",
+		"name": "Shopping Mall Location",
+		"siteName": "Westfield Mall Store",
+		"alternativeNames": ["Mall Store"],
+		"shortDescription": "Convenient location in Westfield Shopping Center",
+		"geoLocation": {
+			"lat": 40.7589,
+			"lon": -73.9851
+		},
+		"address": {
+			"street": "456 Commerce Avenue, Suite 200",
+			"zip": "10002",
+			"city": [
+				{
+					"name": "New York",
+					"locale": "en"
+				}
+			],
+			"state": [
+				{
+					"name": "New York",
+					"locale": "en"
+				}
+			],
+			"country": [
+				{
+					"name": "United States",
+					"locale": "en"
+				}
+			]
+		},
+		"contact": {
+			"phone": "+1-212-555-0200",
+			"email": "mall@example.com"
+		},
+		"openingHours": {
+			"regular": [
+				{
+					"day": "monday",
+					"span": [
+						{
+							"open": "10:00",
+							"close": "21:00"
+						}
+					]
+				},
+				{
+					"day": "tuesday",
+					"span": [
+						{
+							"open": "10:00",
+							"close": "21:00"
+						}
+					]
+				},
+				{
+					"day": "wednesday",
+					"span": [
+						{
+							"open": "10:00",
+							"close": "21:00"
+						}
+					]
+				},
+				{
+					"day": "thursday",
+					"span": [
+						{
+							"open": "10:00",
+							"close": "21:00"
+						}
+					]
+				},
+				{
+					"day": "friday",
+					"span": [
+						{
+							"open": "10:00",
+							"close": "21:00"
+						}
+					]
+				},
+				{
+					"day": "saturday",
+					"span": [
+						{
+							"open": "10:00",
+							"close": "21:00"
+						}
+					]
+				},
+				{
+					"day": "sunday",
+					"span": [
+						{
+							"open": "11:00",
+							"close": "19:00"
+						}
+					]
+				}
+			]
+		},
+		"status": {
+			"type": "open"
+		},
+		"attributes": {
+			"hasParking": true,
+			"hasWifi": true,
+			"wheelchairAccessible": true
+		},
+		"updated": "2024-01-14T14:20:00Z"
+	},
+	{
+		"storeId": "003",
+		"name": "Airport Terminal Store",
+		"siteName": "JFK Terminal 4",
+		"shortDescription": "Quick shopping before your flight",
+		"geoLocation": {
+			"lat": 40.6413,
+			"lon": -73.7781
+		},
+		"address": {
+			"street": "Terminal 4, Gate A12",
+			"zip": "11430",
+			"city": [
+				{
+					"name": "Queens",
+					"locale": "en"
+				}
+			],
+			"state": [
+				{
+					"name": "New York",
+					"locale": "en"
+				}
+			],
+			"country": [
+				{
+					"name": "United States",
+					"locale": "en"
+				}
+			]
+		},
+		"contact": {
+			"phone": "+1-718-555-0300"
+		},
+		"openingHours": {
+			"regular": [
+				{
+					"day": "monday",
+					"span": [
+						{
+							"open": "06:00",
+							"close": "23:00"
+						}
+					]
+				},
+				{
+					"day": "tuesday",
+					"span": [
+						{
+							"open": "06:00",
+							"close": "23:00"
+						}
+					]
+				},
+				{
+					"day": "wednesday",
+					"span": [
+						{
+							"open": "06:00",
+							"close": "23:00"
+						}
+					]
+				},
+				{
+					"day": "thursday",
+					"span": [
+						{
+							"open": "06:00",
+							"close": "23:00"
+						}
+					]
+				},
+				{
+					"day": "friday",
+					"span": [
+						{
+							"open": "06:00",
+							"close": "23:00"
+						}
+					]
+				},
+				{
+					"day": "saturday",
+					"span": [
+						{
+							"open": "06:00",
+							"close": "23:00"
+						}
+					]
+				},
+				{
+					"day": "sunday",
+					"span": [
+						{
+							"open": "06:00",
+							"close": "23:00"
+						}
+					]
+				}
+			]
+		},
+		"status": {
+			"type": "open"
+		},
+		"attributes": {
+			"hasWifi": true,
+			"wheelchairAccessible": true,
+			"airportLocation": true
+		},
+		"updated": "2024-01-13T09:15:00Z"
+	},
+	{
+		"storeId": "004",
+		"name": "Riverside Store",
+		"siteName": "Riverside Plaza",
+		"geoLocation": {
+			"lat": 40.7614,
+			"lon": -73.9776
+		},
+		"address": {
+			"street": "789 Riverside Drive",
+			"zip": "10023",
+			"city": [
+				{
+					"name": "New York",
+					"locale": "en"
+				}
+			],
+			"state": [
+				{
+					"name": "New York",
+					"locale": "en"
+				}
+			],
+			"country": [
+				{
+					"name": "United States",
+					"locale": "en"
+				}
+			]
+		},
+		"contact": {
+			"phone": "+1-212-555-0400",
+			"email": "riverside@example.com"
+		},
+		"status": {
+			"type": "temporarily_closed",
+			"until": "2024-02-01"
+		},
+		"updated": "2024-01-10T16:45:00Z"
+	},
+	{
+		"storeId": "005",
+		"name": "Old Market Location",
+		"siteName": "Historic Market Street",
+		"geoLocation": {
+			"lat": 40.7505,
+			"lon": -73.9934
+		},
+		"address": {
+			"street": "321 Old Market Street",
+			"zip": "10004",
+			"city": [
+				{
+					"name": "New York",
+					"locale": "en"
+				}
+			],
+			"state": [
+				{
+					"name": "New York",
+					"locale": "en"
+				}
+			],
+			"country": [
+				{
+					"name": "United States",
+					"locale": "en"
+				}
+			]
+		},
+		"status": {
+			"type": "permanently_closed"
+		},
+		"updated": "2023-12-01T10:00:00Z"
+	}
+]
+
